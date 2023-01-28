@@ -7,7 +7,8 @@ import dagger.Component
 @Component(
     dependencies = [
         CoreComponent::class
-    ]
+    ],
+    modules = [FeatureOneModule::class]
 )
 interface FeatureOneComponent {
 
