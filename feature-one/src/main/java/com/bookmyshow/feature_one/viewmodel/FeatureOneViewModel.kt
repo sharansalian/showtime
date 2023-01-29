@@ -2,10 +2,12 @@ package com.bookmyshow.feature_one.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.bookmyshow.common_ui.data.VenuesResponse
 import com.bookmyshow.common_ui.utils.network.NetworkStatus
-import com.bookmyshow.feature_one.repository.ShowTimesRepository
+import com.bookmyshow.feature_one.repository.VenueRepositoryImpl
+import com.example.domain.usecases.GetVenuesUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,7 +15,10 @@ import javax.inject.Inject
 /**
  * Created by Akshansh Dhing on 12/10/22.
  */
-class FeatureOneViewModel @Inject constructor(val showTimesRepository: ShowTimesRepository) :
+class FeatureOneViewModel @Inject constructor(
+    val venueRepositoryImpl: VenueRepositoryImpl,
+    private val getVenuesUseCase: GetVenuesUseCase
+) :
     ViewModel() {
 
     companion object {
@@ -25,18 +30,11 @@ class FeatureOneViewModel @Inject constructor(val showTimesRepository: ShowTimes
 
     }
 
-    fun fetch() {
-        viewModelScope.launch(Dispatchers.IO) {
-            val res: NetworkStatus<VenuesResponse> = showTimesRepository.getVenues()
-
-            val v = res.data?.venues
-
-            v
-
-            Log.d(TAG, "${res.data?.venues.toString()} ")
-            Log.d(TAG, "${res.errorMessage} ")
-
-            val x = 1
+    fun getVenues() = liveData {
+        emit(NetworkStatus.Loading())
+        when (val result = getVenuesUseCase.invoke()) {
+            is NetworkStatus.Success -> emit(NetworkStatus.Success(result.data))
+            is NetworkStatus.Error -> emit(NetworkStatus.Error(result.errorMessage!!, null))
         }
     }
 }

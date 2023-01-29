@@ -36,6 +36,7 @@ dependencies {
     api project(":core")
     api project(":common")
     api project(':navigation')
+    api project(':domain')
     implementation project(':feature-two')
 
     implementation daggerDep.core

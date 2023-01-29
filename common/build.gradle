@@ -55,6 +55,7 @@ dependencies {
     api ktx.core
     api ktx.activity
     api ktx.fragment
+    api ktx.livedata
 
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'

@@ -3,6 +3,7 @@ package com.bookmyshow.feature_one.ui
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.view.ViewGroup
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.bookmyshow.common_ui.utils.network.NetworkStatus
 import com.bookmyshow.feature_one.R
 import com.bookmyshow.feature_one.di.FeatureOneDaggerProvider
 import com.bookmyshow.feature_one.viewmodel.FeatureOneViewModel
@@ -19,6 +21,7 @@ class VenuesFragment : Fragment() {
 
     companion object {
         fun newInstance() = VenuesFragment()
+        private const val TAG = "VenuesFragment"
     }
 
     @Inject
@@ -48,7 +51,22 @@ class VenuesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         view.setOnClickListener {
-            viewModel.fetch()
+            viewModel.getVenues().observe(viewLifecycleOwner) { result ->
+                when(result) {
+                    is NetworkStatus.Error -> {
+                        Log.d(TAG, "onViewCreated: ${result.errorMessage}")
+
+                    }
+                    is NetworkStatus.Loading -> {
+                        Log.d(TAG, "onViewCreated: $result")
+
+                    }
+                    is NetworkStatus.Success -> {
+                        Log.d(TAG, "onViewCreated: ${result.data}")
+
+                    }
+                }
+            }
          /*   it.findNavController()
                 .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())*/
         }

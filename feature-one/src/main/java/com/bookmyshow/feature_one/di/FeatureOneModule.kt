@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModelProvider
 import com.bookmyshow.common_ui.di.ViewModelFactory
 import com.bookmyshow.common_ui.di.ViewModelKey
 import com.bookmyshow.common_ui.scopes.Fragment
+import com.bookmyshow.feature_one.repository.VenueRepositoryImpl
 import com.bookmyshow.feature_one.viewmodel.FeatureOneViewModel
+import com.example.domain.repository.VenueRepository
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -21,5 +23,8 @@ interface FeatureOneModule {
     @IntoMap
     @ViewModelKey(FeatureOneViewModel::class)
     fun bindFeatureOneViewModel(featureOneViewModel: FeatureOneViewModel): ViewModel
+
+    @Binds
+    fun bindVenueRepository(venueRepositoryImpl: VenueRepositoryImpl): VenueRepository
 
 }
