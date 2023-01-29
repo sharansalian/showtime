@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/network" />
             <option value="$PROJECT_DIR$/presentation" />
+            <option value="$PROJECT_DIR$/venuefilter" />
           </set>
         </option>
       </GradleProjectSettings>
