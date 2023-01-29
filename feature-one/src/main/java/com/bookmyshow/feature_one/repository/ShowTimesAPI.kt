@@ -1,5 +1,7 @@
 package com.bookmyshow.feature_one.repository
 
+import com.bookmyshow.common_ui.data.VenuesResponse
+import retrofit2.Response
 import retrofit2.http.GET
 
 /**
@@ -8,5 +10,5 @@ import retrofit2.http.GET
 interface ShowTimesAPI {
 
     @GET("/movie_showtimes")
-    fun getShowTimes(): Any
+    suspend fun getShowTimes(): Response<VenuesResponse>
 }
