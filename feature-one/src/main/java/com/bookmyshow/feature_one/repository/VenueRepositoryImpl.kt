@@ -1,6 +1,5 @@
 package com.bookmyshow.feature_one.repository
 
-import com.bookmyshow.common_ui.data.VenuesResponse
 import com.bookmyshow.common_ui.utils.network.NetworkStatus
 import com.bookmyshow.common_ui.utils.network.safeApiCall
 import com.bookmyshow.core.NetworkProvider

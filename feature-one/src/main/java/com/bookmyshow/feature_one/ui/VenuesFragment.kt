@@ -8,11 +8,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import com.bookmyshow.common_ui.utils.network.NetworkStatus
-import com.bookmyshow.feature_one.R
 import com.bookmyshow.feature_one.databinding.FragmentVenuesBinding
 import com.bookmyshow.feature_one.di.FeatureOneDaggerProvider
 import com.bookmyshow.feature_one.viewmodel.FeatureOneViewModel
@@ -54,7 +51,24 @@ class VenuesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.setOnClickListener {
+
+
+        binding.apply {
+            val adapter = VenueAdapter(
+                VenueListener(
+                    onVenueClick = {
+
+                    },
+                    onShowTime = {
+                        Log.d(TAG, "onViewCreated: ${it.showTime}")
+                    })
+            )
+            binding.rvVenues.adapter = adapter
+            //
+
+            /*   it.findNavController()
+                   .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())*/
+
             viewModel.getVenues().observe(viewLifecycleOwner) { result ->
                 when (result) {
                     is NetworkStatus.Error -> {
@@ -68,15 +82,12 @@ class VenuesFragment : Fragment() {
                     is NetworkStatus.Success -> {
                         Log.d(TAG, "onViewCreated: ${result.data}")
 
+                        result.data?.let { response ->
+                            adapter.submitList(response.venues)
+                        }
                     }
                 }
             }
-            binding.apply {
-                //
-            }
-            /*   it.findNavController()
-                   .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())*/
         }
     }
-
 }
