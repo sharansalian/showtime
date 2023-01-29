@@ -17,10 +17,10 @@
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/feature-one" />
             <option value="$PROJECT_DIR$/feature-two" />
+            <option value="$PROJECT_DIR$/navigation" />
             <option value="$PROJECT_DIR$/network" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>

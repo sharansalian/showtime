@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import com.bookmyshow.feature_one.R
 
 class VenuesFragment : Fragment() {
@@ -27,6 +28,15 @@ class VenuesFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(VenuesViewModel::class.java)
         // TODO: Use the ViewModel
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.setOnClickListener {
+            it.findNavController()
+                .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())
+        }
     }
 
 }

@@ -1,24 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/venues_destination">
+    app:startDestination="@id/venues_graph">
 
-    <fragment
-        android:id="@+id/venues_destination"
-        android:name="com.bookmyshow.feature_one.ui.VenuesFragment"
-        android:label="VenuesFragment"
-        tools:layout="@layout/fragment_venues" >
-        <action
-            android:id="@+id/action_venues_destination_to_show_time_info_destination"
-            app:destination="@id/show_time_info_destination" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/show_time_info_destination"
-        android:name="com.bookmyshow.feature_two.ui.ShowTimeInfoFragment"
-        android:label="ShowTimeInfoFragment"
-        tools:layout="@layout/fragment_show_time_info" />
-
+    <include app:graph="@navigation/venues_navigation" />
 </navigation>
