@@ -20,10 +20,10 @@ class FeatureOneViewModel @Inject constructor(val showTimesRepository: ShowTimes
         private const val TAG = "FeatureOneViewModel"
     }
 
-        init {
-            Log.d(TAG, "init: ")
+    init {
+        Log.d(TAG, "init: ")
 
-        }
+    }
 
     fun fetch() {
         viewModelScope.launch(Dispatchers.IO) {
