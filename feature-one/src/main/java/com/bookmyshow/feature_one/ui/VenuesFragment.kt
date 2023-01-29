@@ -13,6 +13,8 @@ import com.bookmyshow.common_ui.utils.network.NetworkStatus
 import com.bookmyshow.feature_one.databinding.FragmentVenuesBinding
 import com.bookmyshow.feature_one.di.FeatureOneDaggerProvider
 import com.bookmyshow.feature_one.viewmodel.FeatureOneViewModel
+import com.example.showtimefilter.ui.Filter
+import com.example.showtimefilter.ui.ShowTimeFilterBottomSheetFragment
 import javax.inject.Inject
 
 class VenuesFragment : Fragment() {
@@ -54,6 +56,25 @@ class VenuesFragment : Fragment() {
 
 
         binding.apply {
+            btnFilter.setOnClickListener {
+
+                ShowTimeFilterBottomSheetFragment.show(
+                    childFragmentManager,
+                    showTimeFilterBottomSheetListener = object :
+                        ShowTimeFilterBottomSheetFragment.ShowTimeFilterBottomSheetListener {
+                        override fun onApply(filters: List<Filter>) {
+                            filters
+                                .filter { it.isSelected }
+                                .map { it.type }
+                                .let { type -> viewModel.setShowTimeFilter(type) }
+                        }
+
+                        override fun onReset() {
+                            viewModel.setShowTimeFilter(listOf())
+                        }
+                    })
+            }
+
             val adapter = VenueAdapter(
                 VenueListener(
                     onVenueClick = {
@@ -63,7 +84,7 @@ class VenuesFragment : Fragment() {
                         Log.d(TAG, "onViewCreated: ${it.showTime}")
                     })
             )
-            binding.rvVenues.adapter = adapter
+            rvVenues.adapter = adapter
             //
 
             /*   it.findNavController()
@@ -88,6 +109,12 @@ class VenuesFragment : Fragment() {
                     }
                 }
             }
+
+
+            viewModel.getFilteredVenues().observe(viewLifecycleOwner) {
+                Log.d(TAG, "getFilteredVenues: $it")
+            }
+
         }
     }
 }

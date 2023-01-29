@@ -43,6 +43,7 @@ dependencies {
     api project(':domain')
     api project(':presentation')
     implementation project(':feature-two')
+    implementation project(':showtimefilter')
 
     implementation daggerDep.core
     kapt daggerDep.compiler
