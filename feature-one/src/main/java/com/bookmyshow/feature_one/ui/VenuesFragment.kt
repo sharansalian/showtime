@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.bookmyshow.common_ui.utils.network.NetworkStatus
 import com.bookmyshow.feature_one.R
+import com.bookmyshow.feature_one.databinding.FragmentVenuesBinding
 import com.bookmyshow.feature_one.di.FeatureOneDaggerProvider
 import com.bookmyshow.feature_one.viewmodel.FeatureOneViewModel
 import javax.inject.Inject
@@ -24,17 +25,19 @@ class VenuesFragment : Fragment() {
         private const val TAG = "VenuesFragment"
     }
 
+    private lateinit var binding: FragmentVenuesBinding
+
     @Inject
     lateinit var factory: ViewModelProvider.Factory
-
     private val viewModel: FeatureOneViewModel by viewModels<FeatureOneViewModel>() { factory }
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_venues, container, false)
+    ): View {
+        binding = FragmentVenuesBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onAttach(context: Context) {
@@ -42,6 +45,7 @@ class VenuesFragment : Fragment() {
         FeatureOneDaggerProvider.component.inject(this)
 
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         // TODO: Use the ViewModel
@@ -52,7 +56,7 @@ class VenuesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.setOnClickListener {
             viewModel.getVenues().observe(viewLifecycleOwner) { result ->
-                when(result) {
+                when (result) {
                     is NetworkStatus.Error -> {
                         Log.d(TAG, "onViewCreated: ${result.errorMessage}")
 
@@ -67,8 +71,11 @@ class VenuesFragment : Fragment() {
                     }
                 }
             }
-         /*   it.findNavController()
-                .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())*/
+            binding.apply {
+                //
+            }
+            /*   it.findNavController()
+                   .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())*/
         }
     }
 
