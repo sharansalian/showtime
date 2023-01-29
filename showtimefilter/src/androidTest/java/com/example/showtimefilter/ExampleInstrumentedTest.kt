@@ -1,4 +1,4 @@
-package com.example.venuefilter
+package com.example.showtimefilter
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

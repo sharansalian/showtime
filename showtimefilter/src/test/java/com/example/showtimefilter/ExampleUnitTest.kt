@@ -1,4 +1,4 @@
-package com.example.venuefilter
+package com.example.showtimefilter
 
 import org.junit.Test
 
