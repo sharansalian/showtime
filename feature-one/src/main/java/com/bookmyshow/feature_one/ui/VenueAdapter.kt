@@ -34,6 +34,7 @@ class VenueAdapter(val clickListener: VenueListener) :
 
         fun bind(item: Venue, clickListener: VenueListener) {
             binding.venue = item
+            binding.txtTitle.text = "${item.name} - ${item.showDate}"
             binding.clickListener = clickListener
             binding.executePendingBindings()
             if (item.showtimes.isNotEmpty()) {
