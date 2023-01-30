@@ -2,14 +2,13 @@ package com.example.showtimefilter.ui
 
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.presentation.models.Filter
 import com.example.showtimefilter.di.ShowTimeDaggerProvider
 import com.example.venuefilter.databinding.FragmentShowTimeFilterBottomSheetBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -91,6 +90,3 @@ class ShowTimeFilterBottomSheetFragment(private val showTimeFilterBottomSheetLis
     }
 
 }
-
-//TODO: Move to presentation
-data class Filter(var id: Int, var isSelected: Boolean = false, val label: String, val type: String)
