@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.bookmyshow.venues">
+
+    <application>
+        <activity
+            android:name="com.bookmyshow.venues.FeatureOneActivity"
+            android:exported="false" />
+    </application>
+
+</manifest>

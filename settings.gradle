@@ -10,7 +10,7 @@ rootProject.name = "Assignment"
 include ':app'
 include ':network'
 include ':common'
-include ':feature-one'
+include ':venues'
 include ':feature-two'
 include ':core'
 include ':navigation'

@@ -42,7 +42,7 @@ android {
 
 dependencies {
 
-    implementation project(':feature-one')
+    implementation project(':venues')
     implementation project(':feature-two')
     implementation project(':common')
     implementation project(':network')

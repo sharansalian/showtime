@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="venue"
+            type="com.example.presentation.models.Venue" />
+
+        <variable
+            name="clickListener"
+            type="com.bookmyshow.venues.ui.VenueListener" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_title"
+            android:layout_width="0dp"
+            android:textColor="@color/gray_80"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Mars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textColor="@color/orange_30"
+            android:text="Sorry! now show available today"
+            app:layout_constraintBottom_toBottomOf="@+id/rvShowTime"
+            app:layout_constraintEnd_toEndOf="@+id/rvShowTime"
+            app:layout_constraintStart_toStartOf="@+id/rvShowTime"
+            app:layout_constraintTop_toTopOf="@+id/rvShowTime" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvShowTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/txt_title"
+            app:layout_constraintTop_toBottomOf="@+id/txt_title"
+            app:spanCount="4"
+            tools:itemCount="20"
+            tools:listitem="@layout/item_show_time" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
