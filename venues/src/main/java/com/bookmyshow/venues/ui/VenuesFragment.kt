@@ -11,10 +11,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bookmyshow.venues.databinding.FragmentVenuesBinding
-import com.bookmyshow.venues.di.FeatureOneDaggerProvider
+import com.bookmyshow.venues.di.VenueDaggerProvider
 import com.bookmyshow.venues.viewmodel.VenuesViewModel
 import com.bookmyshow.venues.viewmodel.SharedViewModel
-import com.example.showtimefilter.ui.Filter
+import com.example.presentation.models.Filter
 import com.example.showtimefilter.ui.ShowTimeFilterBottomSheetFragment
 import javax.inject.Inject
 
@@ -43,7 +43,7 @@ class VenuesFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        FeatureOneDaggerProvider.component.inject(this)
+        VenueDaggerProvider.component.inject(this)
 
     }
 

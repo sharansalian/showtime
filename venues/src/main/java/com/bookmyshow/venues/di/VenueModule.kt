@@ -14,7 +14,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 
 @Module
-interface FeatureOneModule {
+interface VenueModule {
 
     @Binds
     @Fragment

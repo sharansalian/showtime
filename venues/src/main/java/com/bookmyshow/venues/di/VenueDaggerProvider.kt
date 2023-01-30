@@ -3,10 +3,10 @@ package com.bookmyshow.venues.di
 import com.bookmyshow.core.di.CoreComponentProvider
 
 
-object FeatureOneDaggerProvider {
+object VenueDaggerProvider {
 
-    val component: FeatureOneComponent by lazy {
-        DaggerFeatureOneComponent.factory().create(
+    val component: VenueComponent by lazy {
+        DaggerVenueComponent.factory().create(
             coreComponent = CoreComponentProvider.coreComponent
         )
     }

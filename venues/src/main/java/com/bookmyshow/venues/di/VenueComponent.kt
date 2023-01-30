@@ -10,16 +10,16 @@ import dagger.Component
     dependencies = [
         CoreComponent::class
     ],
-    modules = [FeatureOneModule::class]
+    modules = [VenueModule::class]
 )
 @Fragment
-interface FeatureOneComponent {
+interface VenueComponent {
 
     @Component.Factory
     interface Factory {
         fun create(
             coreComponent: CoreComponent
-        ): FeatureOneComponent
+        ): VenueComponent
     }
 
     fun inject(activity: FeatureOneActivity)

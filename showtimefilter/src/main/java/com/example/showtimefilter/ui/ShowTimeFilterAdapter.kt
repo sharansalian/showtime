@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.presentation.models.Filter
 import com.example.presentation.models.ShowTimeType
 import com.example.venuefilter.R
 
