@@ -1,4 +1,4 @@
-package com.bookmyshow.feature_two
+package com.bookmyshow.seats
 
 import org.junit.Test
 

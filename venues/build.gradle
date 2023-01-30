@@ -42,7 +42,7 @@ dependencies {
     api project(':navigation')
     api project(':domain')
     api project(':presentation')
-    implementation project(':feature-two')
+    implementation project(':seats')
     implementation project(':showtimefilter')
 
     implementation daggerDep.core

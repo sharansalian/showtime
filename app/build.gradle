@@ -43,7 +43,7 @@ android {
 dependencies {
 
     implementation project(':venues')
-    implementation project(':feature-two')
+    implementation project(':seats')
     implementation project(':common')
     implementation project(':network')
     api project(':navigation')

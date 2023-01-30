@@ -1,4 +1,4 @@
-package com.bookmyshow.feature_two.ui
+package com.bookmyshow.seats.ui
 
 import androidx.lifecycle.ViewModel
 

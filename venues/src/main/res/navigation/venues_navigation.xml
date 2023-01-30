@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/show_time_info_destination"
         tools:layout="@layout/fragment_show_time_info"
-        android:name="com.bookmyshow.feature_two.ui.ShowTimeInfoFragment"
+        android:name="com.bookmyshow.seats.ui.ShowTimeInfoFragment"
         android:label="ShowTimeInfoFragment" />
 
 

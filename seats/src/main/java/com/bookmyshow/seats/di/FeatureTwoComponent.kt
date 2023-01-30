@@ -1,7 +1,7 @@
-package com.bookmyshow.feature_two.di
+package com.bookmyshow.seats.di
 
 import com.bookmyshow.core.di.CoreComponent
-import com.bookmyshow.feature_two.FeatureTwoActivity
+import com.bookmyshow.seats.FeatureTwoActivity
 import dagger.Component
 
 @Component(

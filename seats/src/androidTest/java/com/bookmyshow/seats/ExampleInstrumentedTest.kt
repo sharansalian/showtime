@@ -1,4 +1,4 @@
-package com.bookmyshow.feature_two
+package com.bookmyshow.seats
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

@@ -1,4 +1,4 @@
-package com.bookmyshow.feature_two.di
+package com.bookmyshow.seats.di
 
 import com.bookmyshow.core.di.CoreComponentProvider
 
