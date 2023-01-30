@@ -20,14 +20,32 @@
         android:layout_height="match_parent"
         android:onClick="@{() -> clickListener.onClick(showTime)}">
 
-        <TextView
-            android:id="@+id/txt_time"
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@{showTime.showTime}"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="8.30 PM" />
+            android:layout_marginStart="8dp"
+            android:background="@drawable/shape_only_border_grey"
+            android:gravity="center"
+            android:padding="4dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txt_title"
+            app:layout_constraintStart_toEndOf="@+id/txt_title"
+            app:layout_constraintTop_toTopOf="@+id/txt_title">
+
+
+            <TextView
+                android:id="@+id/txt_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@{showTime.showTime}"
+                android:textAlignment="center"
+                android:textColor="@color/green_50"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="8.30 PM" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
