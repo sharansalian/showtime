@@ -38,6 +38,7 @@ android {
 dependencies {
     api project(":core")
     api project(":common")
+    api project(":presentation")
     implementation daggerDep.core
     kapt daggerDep.compiler
 }

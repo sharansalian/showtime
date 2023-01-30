@@ -11,7 +11,7 @@ import com.example.presentation.models.Venue
 
 
 class VenueAdapter(val clickListener: VenueListener) :
-    ListAdapter<Venue, VenueAdapter.ViewHolder>(VenueDiffCallback()) {
+    ListAdapter<Venue?, VenueAdapter.ViewHolder>(VenueDiffCallback()) {
 
     class ViewHolder private constructor(
         val binding: ItemVenueBinding,
@@ -54,18 +54,21 @@ class VenueAdapter(val clickListener: VenueListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position)!!, clickListener)
+        val item : Venue? = getItem(position)
+        item?.let {
+            holder.bind(it, clickListener)
+        }
     }
 }
 
-class VenueDiffCallback : DiffUtil.ItemCallback<Venue>() {
+class VenueDiffCallback : DiffUtil.ItemCallback<Venue?>() {
 
     override fun areItemsTheSame(oldItem: Venue, newItem: Venue): Boolean {
-        return false
+        return oldItem == newItem
     }
 
     override fun areContentsTheSame(oldItem: Venue, newItem: Venue): Boolean {
-        return false
+        return oldItem == newItem
     }
 }
 

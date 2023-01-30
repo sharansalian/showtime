@@ -4,6 +4,7 @@ import com.example.domain.entities.DomainEntities
 import com.example.presentation.models.Showtime
 import com.example.presentation.models.Venue
 import com.example.presentation.models.VenuesResponse
+import com.example.presentation.models.getShowTimeType
 
 fun DomainEntities.DomainVenueResponse.map() = VenuesResponse(
     venues = venues.map { it.map() }
@@ -16,5 +17,8 @@ fun DomainEntities.DomainVenue.map() = Venue(
 )
 
 fun DomainEntities.DomainShowtime.map() = Showtime(
-    showDateCode, showTime
+    showDateCode, showTime,
+    type = getShowTimeType(showTime)
 )
+
+

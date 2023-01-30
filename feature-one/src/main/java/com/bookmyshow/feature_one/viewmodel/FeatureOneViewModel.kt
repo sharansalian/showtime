@@ -56,15 +56,14 @@ class FeatureOneViewModel @Inject constructor(
         liveData { emit(it) }
     }
 
-    fun getFilteredVenues() = showTimeFilter.switchMap { filter ->
-        val x = filter
+    fun getFilteredVenues(): LiveData<List<Venue?>?> = showTimeFilter.switchMap { filter ->
         liveData {
-            val y = filter
-            if(filter.isNotEmpty()) {
-                val mutableVenuse: ArrayList<Venue>? = _venues.value?.let { ArrayList(it.map { it.copy() }) }
-                val ven: List<Venue>? = mutableVenuse?.map { venue: Venue ->
+            if (filter.isNotEmpty()) {
+                val mutableVenues: ArrayList<Venue>? =
+                    _venues.value?.let { ArrayList(it.map { it.copy() }) }
+                val ven: List<Venue?>? = mutableVenues?.map { venue: Venue ->
                     val filteredTime = venue.showtimes.filter { showtime: Showtime ->
-                        showtime.showTime in filter
+                        showtime.type.name in filter
                     }
                     venue.showtimes = filteredTime
                     venue
