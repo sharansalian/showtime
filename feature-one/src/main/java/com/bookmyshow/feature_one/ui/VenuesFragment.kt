@@ -90,28 +90,35 @@ class VenuesFragment : Fragment() {
             /*   it.findNavController()
                    .navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())*/
 
-            viewModel.getVenues().observe(viewLifecycleOwner) { result ->
-                when (result) {
-                    is NetworkStatus.Error -> {
-                        Log.d(TAG, "onViewCreated: ${result.errorMessage}")
+            /*  viewModel.getVenues().observe(viewLifecycleOwner) { result ->
+                  when (result) {
+                      is NetworkStatus.Error -> {
+                          Log.d(TAG, "onViewCreated: ${result.errorMessage}")
 
-                    }
-                    is NetworkStatus.Loading -> {
-                        Log.d(TAG, "onViewCreated: $result")
+                      }
+                      is NetworkStatus.Loading -> {
+                          Log.d(TAG, "onViewCreated: $result")
 
-                    }
-                    is NetworkStatus.Success -> {
-                        Log.d(TAG, "onViewCreated: ${result.data}")
+                      }
+                      is NetworkStatus.Success -> {
+                          Log.d(TAG, "onViewCreated: ${result.data}")
 
-                        result.data?.let { response ->
-                            adapter.submitList(response.venues)
-                        }
-                    }
-                }
-            }
-
-
+                          result.data?.let { response ->
+                              adapter.submitList(response.venues)
+                          }
+                      }
+                  }
+              }
+              */
             viewModel.getFilteredVenues().observe(viewLifecycleOwner) {
+                adapter.submitList(it)
+            }
+/*
+            viewModel.venuess.observe(viewLifecycleOwner) {
+                adapter.submitList(it)
+            }*/
+
+            viewModel.getShowTimeFilter().observe(viewLifecycleOwner) {
                 Log.d(TAG, "getFilteredVenues: $it")
             }
 

@@ -13,40 +13,44 @@ import com.example.presentation.models.Venue
 class VenueAdapter(val clickListener: VenueListener) :
     ListAdapter<Venue, VenueAdapter.ViewHolder>(VenueDiffCallback()) {
 
-
-    private val showTimeAdapter by lazy {
-        ShowTimeAdapter(ShowTimeListener {
-            clickListener.onShowTime(it)
-        })
-    }
-
     class ViewHolder private constructor(
         val binding: ItemVenueBinding,
-        val adapter: ShowTimeAdapter
+        val onShowTime: (showtime: Showtime) -> Unit
     ) :
         RecyclerView.ViewHolder(binding.root) {
+
+        private var showTimeAdapter: ShowTimeAdapter? = null
+
+        init {
+            showTimeAdapter = ShowTimeAdapter(ShowTimeListener {
+                onShowTime(it)
+            })
+            binding.apply {
+                rvShowTime.adapter = showTimeAdapter
+            }
+
+        }
 
         fun bind(item: Venue, clickListener: VenueListener) {
             binding.venue = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
-            binding.apply {
-                rvShowTime.adapter = adapter
-            }
-            adapter.submitList(item.showtimes)
+            showTimeAdapter?.submitList(item.showtimes)
         }
 
         companion object {
-            fun from(parent: ViewGroup, showTimeAdapter: ShowTimeAdapter): ViewHolder {
+            fun from(parent: ViewGroup, onShowTime: (showtime: Showtime) -> Unit): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
                 val binding = ItemVenueBinding.inflate(layoutInflater, parent, false)
-                return ViewHolder(binding, showTimeAdapter)
+                return ViewHolder(binding, onShowTime = onShowTime)
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder.from(parent, showTimeAdapter)
+        return ViewHolder.from(parent, onShowTime = {
+            clickListener.onShowTime(it)
+        })
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -57,11 +61,11 @@ class VenueAdapter(val clickListener: VenueListener) :
 class VenueDiffCallback : DiffUtil.ItemCallback<Venue>() {
 
     override fun areItemsTheSame(oldItem: Venue, newItem: Venue): Boolean {
-        return oldItem.showDate == newItem.showDate
+        return false
     }
 
     override fun areContentsTheSame(oldItem: Venue, newItem: Venue): Boolean {
-        return oldItem == newItem
+        return false
     }
 }
 

@@ -20,10 +20,10 @@ class ShowTimeFilterBottomSheetViewModel @Inject constructor() : ViewModel() {
     val filters: MutableLiveData<List<Filter>> =
         MutableLiveData(
             listOf(
-                Filter(1, false, "Morning", "1"),
-                Filter(2, false, "Afternoon", "2"),
-                Filter(3, false, "Evening", "3"),
-                Filter(4, false, "Night", "4"),
+                Filter(1, false, "Morning", "09:00am"),
+                Filter(2, false, "Afternoon", "12:15pm"),
+                Filter(3, false, "Evening", "04:00pm"),
+                Filter(4, false, "Night", "09:30pm"),
             )
         )
 
