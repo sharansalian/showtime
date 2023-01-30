@@ -1,6 +1,7 @@
 package com.bookmyshow.feature_one.ui
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -35,7 +36,15 @@ class VenueAdapter(val clickListener: VenueListener) :
             binding.venue = item
             binding.clickListener = clickListener
             binding.executePendingBindings()
-            showTimeAdapter?.submitList(item.showtimes)
+            if (item.showtimes.isNotEmpty()) {
+                binding.rvShowTime.visibility = View.VISIBLE
+                binding.txtTime.visibility = View.GONE
+                showTimeAdapter?.submitList(item.showtimes)
+            } else {
+                binding.rvShowTime.visibility = View.INVISIBLE
+                binding.txtTime.visibility = View.VISIBLE
+
+            }
         }
 
         companion object {
@@ -54,7 +63,7 @@ class VenueAdapter(val clickListener: VenueListener) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item : Venue? = getItem(position)
+        val item: Venue? = getItem(position)
         item?.let {
             holder.bind(it, clickListener)
         }
