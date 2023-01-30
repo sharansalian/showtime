@@ -10,7 +10,7 @@ import com.bookmyshow.assignment.databinding.ActivityMainBinding
 import com.bookmyshow.assignment.di.DaggerAppComponentProvider
 import com.bookmyshow.core.ImageLoader
 import com.bookmyshow.venues.FeatureOneActivity
-import com.bookmyshow.venues.viewmodel.FeatureOneViewModel
+import com.bookmyshow.venues.viewmodel.VenuesViewModel
 import com.bookmyshow.venues.viewmodel.SharedViewModel
 import javax.inject.Inject
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
-    private val viewModel: FeatureOneViewModel by viewModels<FeatureOneViewModel> { factory }
+    private val viewModel: VenuesViewModel by viewModels<VenuesViewModel> { factory }
     private val sharedViewModel: SharedViewModel by viewModels<SharedViewModel> { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -6,7 +6,7 @@ import com.bookmyshow.common_ui.di.ViewModelFactory
 import com.bookmyshow.common_ui.di.ViewModelKey
 import com.bookmyshow.common_ui.scopes.Fragment
 import com.bookmyshow.venues.repository.VenueRepositoryImpl
-import com.bookmyshow.venues.viewmodel.FeatureOneViewModel
+import com.bookmyshow.venues.viewmodel.VenuesViewModel
 import com.bookmyshow.venues.viewmodel.SharedViewModel
 import com.example.domain.repository.VenueRepository
 import dagger.Binds
@@ -22,8 +22,8 @@ interface FeatureOneModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(FeatureOneViewModel::class)
-    fun bindFeatureOneViewModel(featureOneViewModel: FeatureOneViewModel): ViewModel
+    @ViewModelKey(VenuesViewModel::class)
+    fun bindVenuesViewModel(venuesViewModel: VenuesViewModel): ViewModel
 
     @Binds
     @IntoMap

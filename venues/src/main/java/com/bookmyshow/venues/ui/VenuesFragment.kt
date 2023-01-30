@@ -12,7 +12,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bookmyshow.venues.databinding.FragmentVenuesBinding
 import com.bookmyshow.venues.di.FeatureOneDaggerProvider
-import com.bookmyshow.venues.viewmodel.FeatureOneViewModel
+import com.bookmyshow.venues.viewmodel.VenuesViewModel
 import com.bookmyshow.venues.viewmodel.SharedViewModel
 import com.example.showtimefilter.ui.Filter
 import com.example.showtimefilter.ui.ShowTimeFilterBottomSheetFragment
@@ -29,7 +29,7 @@ class VenuesFragment : Fragment() {
 
     @Inject
     lateinit var factory: ViewModelProvider.Factory
-    private val viewModel: FeatureOneViewModel by viewModels<FeatureOneViewModel>() { factory }
+    private val viewModel: VenuesViewModel by viewModels<VenuesViewModel>() { factory }
     private val sharedViewModel: SharedViewModel by activityViewModels<SharedViewModel>() { factory }
 
 

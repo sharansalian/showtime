@@ -17,7 +17,7 @@ import javax.inject.Inject
 /**
  * Created by Akshansh Dhing on 12/10/22.
  */
-class FeatureOneViewModel @Inject constructor(
+class VenuesViewModel @Inject constructor(
     val venueRepositoryImpl: VenueRepositoryImpl,
     private val getVenuesUseCase: GetVenuesUseCase
 ) :
