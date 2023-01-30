@@ -61,17 +61,13 @@ class VenuesFragment : Fragment() {
 
                     },
                     onShowTime = {
-                       findNavController().navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())
+                        findNavController().navigate(VenuesFragmentDirections.actionVenuesDestinationToShowTimeInfoDestination())
                     })
             )
             rvVenues.adapter = adapter
 
             viewModel.getFilteredVenues().observe(viewLifecycleOwner) {
                 adapter.submitList(it)
-            }
-
-            viewModel.getShowTimeFilter().observe(viewLifecycleOwner) {
-                Log.d(TAG, "getFilteredVenues: $it")
             }
 
             sharedViewModel.filterClickEvent.observe(viewLifecycleOwner) {
