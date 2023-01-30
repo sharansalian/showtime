@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bookmyshow.common_ui.utils.network.NetworkStatus
 import com.bookmyshow.feature_one.databinding.FragmentVenuesBinding
 import com.bookmyshow.feature_one.di.FeatureOneDaggerProvider
 import com.bookmyshow.feature_one.viewmodel.FeatureOneViewModel
+import com.bookmyshow.feature_one.viewmodel.SharedViewModel
 import com.example.showtimefilter.ui.Filter
 import com.example.showtimefilter.ui.ShowTimeFilterBottomSheetFragment
 import javax.inject.Inject
@@ -29,6 +31,7 @@ class VenuesFragment : Fragment() {
     @Inject
     lateinit var factory: ViewModelProvider.Factory
     private val viewModel: FeatureOneViewModel by viewModels<FeatureOneViewModel>() { factory }
+    private val sharedViewModel: SharedViewModel by activityViewModels<SharedViewModel>() { factory }
 
 
     override fun onCreateView(
@@ -56,24 +59,7 @@ class VenuesFragment : Fragment() {
 
 
         binding.apply {
-            btnFilter.setOnClickListener {
 
-                ShowTimeFilterBottomSheetFragment.show(
-                    childFragmentManager,
-                    showTimeFilterBottomSheetListener = object :
-                        ShowTimeFilterBottomSheetFragment.ShowTimeFilterBottomSheetListener {
-                        override fun onApply(filters: List<Filter>) {
-                            filters
-                                .filter { it.isSelected }
-                                .map { it.type }
-                                .let { type -> viewModel.setShowTimeFilter(type) }
-                        }
-
-                        override fun onReset() {
-                            viewModel.setShowTimeFilter(listOf())
-                        }
-                    })
-            }
 
             val adapter = VenueAdapter(
                 VenueListener(
@@ -120,6 +106,27 @@ class VenuesFragment : Fragment() {
 
             viewModel.getShowTimeFilter().observe(viewLifecycleOwner) {
                 Log.d(TAG, "getFilteredVenues: $it")
+            }
+
+            sharedViewModel.filterClickEvent.observe(viewLifecycleOwner) {
+                Log.d(TAG, "filterClickEvent: ")
+                it.getContentIfNotHanlded()?.let {
+                    ShowTimeFilterBottomSheetFragment.show(
+                        childFragmentManager,
+                        showTimeFilterBottomSheetListener = object :
+                            ShowTimeFilterBottomSheetFragment.ShowTimeFilterBottomSheetListener {
+                            override fun onApply(filters: List<Filter>) {
+                                filters
+                                    .filter { it.isSelected }
+                                    .map { it.type }
+                                    .let { type -> viewModel.setShowTimeFilter(type) }
+                            }
+
+                            override fun onReset() {
+                                viewModel.setShowTimeFilter(listOf())
+                            }
+                        })
+                }
             }
 
         }

@@ -30,6 +30,7 @@ class FeatureOneViewModel @Inject constructor(
     private val _venues: MutableLiveData<List<Venue>> = MutableLiveData()
     val venuess: LiveData<List<Venue>> = _venues
 
+
     init {
         Log.d(TAG, "init: ")
 
