@@ -12,24 +12,16 @@
         android:layout_height="match_parent"
         tools:context=".ui.VenuesFragment">
 
-        <Button
-            android:id="@+id/btn_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Filter"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_venues"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginTop="64dp"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toBottomOf="@+id/btn_filter"
+            app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="3"
             tools:listitem="@layout/item_venue" />
 

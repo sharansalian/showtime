@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/venues_destination"
         android:name="com.bookmyshow.venues.ui.VenuesFragment"
-        android:label="fragment_venues"
         tools:layout="@layout/fragment_venues" >
         <action
             android:id="@+id/action_venues_destination_to_show_time_info_destination"
@@ -19,7 +18,7 @@
         android:id="@+id/show_time_info_destination"
         tools:layout="@layout/fragment_show_time_info"
         android:name="com.bookmyshow.seats.ui.ShowTimeInfoFragment"
-        android:label="ShowTimeInfoFragment" />
+        android:label="How many Seats?" />
 
 
 </navigation>
