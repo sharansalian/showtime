@@ -21,6 +21,7 @@
             <option value="$PROJECT_DIR$/presentation" />
             <option value="$PROJECT_DIR$/seats" />
             <option value="$PROJECT_DIR$/showtimefilter" />
+            <option value="$PROJECT_DIR$/stream" />
             <option value="$PROJECT_DIR$/venues" />
           </set>
         </option>
